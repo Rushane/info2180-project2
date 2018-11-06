@@ -14,6 +14,7 @@ window.onload = function() {
 		row = 300;
 		col = 300;
 		
+		
 		document.getElementById('shufflebutton').addEventListener("click", function(){
 			shuffle();
 		 });
@@ -32,12 +33,12 @@ window.onload = function() {
 
         for(let x=0; x < puzzlePiece.length; x++) {
 			$(puzzlePiece[x]).click(function(){
-				if(movable($(this).css("left"), $(this).css("top") )){
+				if(isMovable($(this).css("left"), $(this).css("top") )){
 					swap($(this));
 				}
 			});
 			$(puzzlePiece[x]).hover(function(){
-				if(movable($(this).css("left"), $(this).css("top") ) ){
+				if(isMovable($(this).css("left"), $(this).css("top") ) ){
 					$(this).addClass("movablepiece");
 				}
 			},
@@ -57,7 +58,7 @@ window.onload = function() {
 	
 	}
 	
-	function movable(posLeft, posTop){
+	function isMovable(posLeft, posTop){
 		let result = false;
 		posLeft = parseInt(posLeft);
 		posTop = parseInt(posTop);
@@ -85,7 +86,7 @@ window.onload = function() {
 		let lst = [];
 		for(let j = 0; j < 100; j++){
 			for(let x = 0; x < puzzlePiece.length; x++){
-				if(movable(puzzlePiece[x].style.left, puzzlePiece[x].style.top)){
+				if(isMovable(puzzlePiece[x].style.left, puzzlePiece[x].style.top)){
 					lst.push([puzzlePiece[x],x]);
 				}
 			}
